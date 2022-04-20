@@ -70,4 +70,4 @@ async def dice(ctx):
     else:
         return
 
-client.run("OTY2MTI3OTY3NDkzMzIwNzE1.Yl9OyQ.Dm4Xpj28kYGeiex2vr9pPG-VjYg")
+client.run("")
