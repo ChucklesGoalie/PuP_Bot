@@ -100,6 +100,7 @@ class sixmans(commands.Cog):
         await ctx.send('Queue has been cleared')
 
     @commands.command(aliases=['startq'])
+    @commands.has_guild_permissions(manage_guild=True)
     async def startqueue(self, ctx):
         mention_members = " ".join([member.mention for member in self.rlqueue])
         if self.rlqueue == []:

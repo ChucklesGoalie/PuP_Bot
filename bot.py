@@ -9,7 +9,7 @@ import functools
 import itertools
 import math
 import ffmpeg
-from cogs import sixmans, Music, birthday
+from cogs import sixmans, Music, birthday, helpy
 from async_timeout import timeout
 from discord.voice_client import VoiceClient
 import os
@@ -17,17 +17,19 @@ import os
 intents = discord.Intents.all() # Imports all the Intents
 directory = os.path.dirname(os.path.realpath(__file__))
 client = commands.Bot(command_prefix = ".", case_insensitive=True, intents=intents)
+
 async def main():
     print(f'started at {time.strftime(("%a, %#d %B %Y, %I:%M %p ET"))}')
 asyncio.run(main())
 
 @client.event
 async def on_ready():
-    await client.change_presence(status=discord.Status.online, activity=discord.Game('Testing in progress ...'))
+    await client.change_presence(status=discord.Status.online, activity=discord.Game('.help | Testing in progress ...'))
     print('The Bot is running!')
     client.add_cog(sixmans(client))
     client.add_cog(Music(client))
     client.add_cog(birthday(client))
+    client.add_cog(helpy(client))
 
 @client.event 
 async def on_command_error(ctx, ERROR):
@@ -69,5 +71,5 @@ async def dice(ctx):
         await ctx.send(f"**{ctx.author.display_name}**, It's a draw, Please try again!")
     else:
         return
-
+client.remove_command('help')
 client.run("")

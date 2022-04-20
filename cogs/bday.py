@@ -21,17 +21,13 @@ class birthday(commands.Cog):
 
     @commands.command()
     async def setbday(self, ctx, Name, Day, Month, Year):
-        Name = str
-        Day = time.strftime("%d")
-        Month = time.strftime("%m")
-        Year = time.strftime("%Y")
         with open("PuP-Bday.json", 'w+') as f:
             data = Name, Day, Month, Year
             await ctx.send(f"Is this right? Answer 'Yes' or 'No' \n {data}")
             await input()
-            if input()=="Yes":
+            if input()=="Yes" or "yes":
                 await ctx.send('Thank you! This will go into the database.')
                 json.dumps(json.load(f), data)
-            elif input()=="No":
+            elif input()=="No" or "no":
                 await ctx.send('Cancelling, please re-try the command again to correctly get the data.')
                 return
